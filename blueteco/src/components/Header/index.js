@@ -70,10 +70,13 @@ export const HeaderH = () => {
            
               <Nav id="nav" justify className="justify-content-center">
                 <Nav.Item>
-                  <Nav.Link href="#home">Home</Nav.Link>
+                  <Nav.Link href="/">Início</Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
-                  <Nav.Link href="#home">Home</Nav.Link>
+                  <Nav.Link href="/register">Cadastre-se</Nav.Link>
+                </Nav.Item>
+                <Nav.Item>
+                  <Nav.Link href="/login">Entrar</Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
                   <Nav.Link href="#home">Home</Nav.Link>

@@ -3,6 +3,7 @@ import { Form, Container, Col } from 'react-bootstrap';
 import { PageTitle } from '../../components/PageTitle';
 import { HeaderH } from '../../components/Header';
 import { ButtonB } from '../../components/Button';
+import { Log } from "../../components/FormArea";
 
 import { useState } from 'react';
 import axios from 'axios';
@@ -24,22 +25,18 @@ export const Login = () => {
       .then((response) => {
         const token = response.data.token;
         localStorage.setItem('token', token);
+        console.log(response);
+        alert("Usuário logado!");
+        setEmail("");
+        setPassword("");
+
+
       })
       .catch((error) => {
-        console.log(error.message);
+        console.log(error.response.data.message);
+        alert(error.response.data.message);
       });
   };
-
-
-const Log = styled.div`
-  background-color: #eeffff;
-  
-  padding: 1rem 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 80vh;
-`;
 
 
   return (
@@ -56,6 +53,7 @@ const Log = styled.div`
           <Form.Control
             type="email"
             placeholder="Digite o email"
+            value={email}
             onChange={(event) => setEmail(event.target.value)}
             required
             />
@@ -65,6 +63,7 @@ const Log = styled.div`
           <Form.Control
             type="password"
             placeholder="Digite a senha"
+            value={password}
             onChange={(event) => setPassword(event.target.value)}
             required
             />
