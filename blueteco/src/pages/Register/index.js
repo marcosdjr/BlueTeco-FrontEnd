@@ -11,8 +11,6 @@ import axios from "axios";
 
 export const Register = () => {
 
-   
-
   const [email, setEmail] = useState("");
   const [firstName, setFirstName] = useState("");
   const [birthDate, setBirthDate] = useState("");
@@ -35,10 +33,22 @@ export const Register = () => {
     axios
       .post("/users", User)
       .then((response) => {
-        console.log(response.message);
+        console.log(response);
+        alert("Usuário registrado com sucesso!");
+        setEmail("");
+        setFirstName("");
+        setBirthDate("");
+        setPassword("");
+        setRole("");
+
+
+
+
       })
       .catch((error) => {
-        console.log(error.message);
+        console.log(error.response.data.message);
+        alert(error.response.data.message);
+
       });
   };
 
@@ -55,6 +65,7 @@ export const Register = () => {
               <Form.Control
                 type="email"
                 placeholder="Email"
+                value={email}
                 onChange={(event) => setEmail(event.target.value)}
               />
             </Form.Group>
@@ -65,6 +76,7 @@ export const Register = () => {
                 <Form.Control
                   type="text"
                   placeholder="Nome"
+                  value={firstName}
                   onChange={(event) => setFirstName(event.target.value)}
                 />
               </Form.Group>
@@ -74,6 +86,7 @@ export const Register = () => {
               <Form.Label>Data de Nascimento</Form.Label>
               <Form.Control
                 type="date"
+                value={birthDate}
                 onChange={(event) => setBirthDate(event.target.value)}
               />
             </Form.Group>
@@ -83,6 +96,7 @@ export const Register = () => {
               <Form.Control
                 type="text"
                 placeholder="Digite seu tipo de cadastro"
+                value={role}
                 onChange={(event) => setRole(event.target.value)}
               />
             </Form.Group>
@@ -93,6 +107,7 @@ export const Register = () => {
                 <Form.Control
                   type="password"
                   placeholder="Senha"
+                  value={password}
                   onChange={(event) => setPassword(event.target.value)}
                 />
               </Form.Group>
